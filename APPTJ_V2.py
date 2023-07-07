@@ -138,7 +138,7 @@ def komplain(user):
     print("\n=== Komplain ===")
     komplain = input("Masukkan komplain Anda: ")
     user["Komplain"] = komplain
-    komplainList.append({"Nama Pembeli": user["Nama Pembeli"], "Komplain": komplain})
+    komplainList.append({"Nama Pembeli": user["Username"], "Komplain": komplain})
     print("Komplain berhasil diajukan.")
     input("Tekan Enter untuk melanjutkan...")
 
@@ -246,7 +246,6 @@ def menu_pengguna(user):
             print(("═")*64)
             print("Pilihan tidak valid. Silakan coba lagi.")
             salah=0
-        print("\n=== Menu Pengguna ===")
         print(("═")*50)
         print((" ")*6+"███╗   ███╗███████╗███╗   ██╗██╗   ██╗")
         print((" ")*6+"████╗ ████║██╔════╝████╗  ██║██║   ██║")
@@ -261,7 +260,7 @@ def menu_pengguna(user):
         print((" ")*8+"██║   ██║╚════██║██╔══╝  ██╔══██╗")
         print((" ")*8+"╚██████╔╝███████║███████╗██║  ██║")
         print((" ")*8+" ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝")
-        print((" ")*19+"=== Menu Pengguna ===")
+        print((" ")*14+"=== Menu Pengguna ===")
         print(("═")*50)
         print("1. Tampilkan Barang")
         print("2. Pembelian Barang")
