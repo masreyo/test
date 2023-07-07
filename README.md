@@ -1,4 +1,9 @@
 # APPTJ V2
-<li> <img src="https://github.com/masreyo/test/assets/128023299/c609138f-a304-4bdd-9d8f-52e61711c887"> </li>
-<li> <img src="https://github.com/masreyo/test/assets/128023299/ef8a658d-9f20-4b78-95a7-aee378e0bf26"> </li>
+![image](https://github.com/masreyo/test/assets/128023299/642687a3-1923-46bd-8ab0-048058dde0f9)
+
+![image](https://github.com/masreyo/test/assets/128023299/f7cebbde-e823-4137-896f-f793b396cb57)
+
+
+
+
 
