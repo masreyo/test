@@ -18,8 +18,13 @@ komplainList = []
 
 # Fungsi untuk login
 def login():
+    salah=0
     while True:
         system('cls')
+        if salah:
+            print(("═")*64)
+            print("Username atau password salah. Silakan coba lagi.")
+            salah=0
         print(("═")*64)
         print((" ")*5+"██╗      ██████╗  ██████╗ ██╗███╗   ██╗")
         print((" ")*5+"██║     ██╔═══██╗██╔════╝ ██║████╗  ██║")
@@ -47,8 +52,7 @@ def login():
         if user is not None:
             return user
         else:
-            print("Username atau password salah. Silakan coba lagi.")
-            input("Tekan Enter untuk melanjutkan...")
+            salah=True
 
 
 # Fungsi untuk menampilkan daftar barang
@@ -78,12 +82,17 @@ def tambah_barang():
     input("Tekan Enter untuk melanjutkan...")
 
 
-
 # Fungsi untuk menghapus barang
 def hapus_barang():
     system('cls')
     print("\n=== Hapus Barang ===")
-    id_barang = int(input("Masukkan ID Barang yang akan dihapus: "))
+    try:
+        id_barang = int(input("Masukkan ID Barang yang akan dihapus: "))
+    except ValueError:
+        print("Inputan id barang harus berupa angka.")
+        input("Tekan Enter untuk melanjutkan...")
+        return 0
+    input("Tekan Enter untuk melanjutkan...")
     if id_barang >= 1 and id_barang <= len(barangList):
         del barangList[id_barang - 1]
         print("Barang berhasil dihapus.")
@@ -180,9 +189,13 @@ def pembayaran(user):
 
 # Fungsi untuk menu admin
 def menu_admin():
+    salah=0
     while True:
-        print('')
         system('cls')
+        if salah:
+            print(("═")*50)
+            print("Pilihan tidak valid. Silakan coba lagi.")
+            salah=0
         print(("═")*50)
         print((" ")*6+"███╗   ███╗███████╗███╗   ██╗██╗   ██╗")
         print((" ")*6+"████╗ ████║██╔════╝████╗  ██║██║   ██║")
@@ -198,13 +211,13 @@ def menu_admin():
         print((" ")*5+"██║  ██║██████╔╝██║ ╚═╝ ██║██║██║ ╚████║")
         print((" ")*5+"╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝")
         print(("═")*50)
-        print("\n=== Menu Admin ===")
         print("1. Tampilkan Barang")
         print("2. Tambah Barang")
         print("3. Hapus Barang")
         print("4. Tampilkan Riwayat Pembelian")
         print("5. Tampilkan Komplain")
         print("6. Logout")
+        print(("═")*50)
         
         pilihan = input("Masukkan pilihan (1-6): ")
         
@@ -221,14 +234,18 @@ def menu_admin():
         elif pilihan == "6":
             break
         else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
-        input("Tekan Enter untuk melanjutkan...")
+            salah=1
 
 
 # Fungsi untuk menu pengguna
 def menu_pengguna(user):
+    salah=0
     while True:
         system('cls')
+        if salah:
+            print(("═")*64)
+            print("Pilihan tidak valid. Silakan coba lagi.")
+            salah=0
         print("\n=== Menu Pengguna ===")
         print(("═")*50)
         print((" ")*6+"███╗   ███╗███████╗███╗   ██╗██╗   ██╗")
@@ -244,6 +261,7 @@ def menu_pengguna(user):
         print((" ")*8+"██║   ██║╚════██║██╔══╝  ██╔══██╗")
         print((" ")*8+"╚██████╔╝███████║███████╗██║  ██║")
         print((" ")*8+" ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝")
+        print((" ")*19+"=== Menu Pengguna ===")
         print(("═")*50)
         print("1. Tampilkan Barang")
         print("2. Pembelian Barang")
@@ -264,14 +282,18 @@ def menu_pengguna(user):
         elif pilihan == "5":
             break
         else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
-        input("Tekan Enter untuk melanjutkan...")
+            salah=1
+
 
 
 # Main program
+salah=0
 while True:
     system('cls')
-    print("\n=== Aplikasi Penjualan ===")
+    if salah:
+        print(("═")*64)
+        print("Pilihan tidak valid. Silakan coba lagi.")
+        salah=0
     print(("═")*64)
     print((" ")*5+" █████╗ ██████╗ ██████╗ ████████╗  ██╗   ██╗   ██╗██████╗ ")
     print((" ")*5+"██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝  ██║   ██║   ██║╚════██╗")
@@ -279,12 +301,12 @@ while True:
     print((" ")*5+"██╔══██║██╔═══╝ ██╔═══╝    ██║██   ██║   ╚██╗ ██╔╝██╔═══╝ ")
     print((" ")*5+"██║  ██║██║     ██║        ██║╚█████╔╝    ╚████╔╝ ███████╗")
     print((" ")*5+"╚═╝  ╚═╝╚═╝     ╚═╝        ╚═╝ ╚════╝      ╚═══╝  ╚══════╝ ")
+    print((" ")*19+"=== Aplikasi Penjualan ===")
     print(("═")*64)
     print("1. Login")
     print("2. Keluar")
-    
+    print(("═")*64)
     pilihan = input("Masukkan pilihan (1-2): ")
-    
     if pilihan == "1":
         user = login()
         if user["Role"] == "admin":
@@ -294,5 +316,4 @@ while True:
     elif pilihan == "2":
         break
     else:
-        print("Pilihan tidak valid. Silakan coba lagi.")
-        input("Tekan Enter untuk melanjutkan...")
+        salah=1
