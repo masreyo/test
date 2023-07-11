@@ -1,3 +1,5 @@
+# Pembuatan Aplikasi Berbasis Terminal Untuk Perpustakaan (APPTJ) dan Koperasi (APPTJ V2) Untuk Mengatasi Permasalahan di SMA Tunas Jaya
+
 from os import system
 
 
@@ -186,16 +188,52 @@ def pembayaran(user):
         print("Anda belum melakukan pembelian.")
     input("Tekan Enter untuk melanjutkan...")
 
+# Fungsi untuk mengedit barang
+def edit_barang():
+    system('cls')
+    print("\n=== Edit Barang ===")
+    try:
+        id_barang = int(input("Masukkan ID Barang yang akan diubah: "))
+    except ValueError:
+        print("Inputan id barang harus berupa angka.")
+        input("Tekan Enter untuk melanjutkan...")
+        return 0
+
+    if id_barang >= 1 and id_barang <= len(barangList):
+        barang = barangList[id_barang - 1]
+        print("Data Barang:")
+        print("Nama Barang:", barang["Nama"])
+        print("Harga Barang:", barang["Harga"])
+        print("=====================")
+
+        nama = input("Masukkan nama barang baru (kosongkan jika tidak ingin mengubah): ")
+        harga_input = input("Masukkan harga barang baru (kosongkan jika tidak ingin mengubah): ")
+
+        if nama:
+            barang["Nama"] = nama
+        if harga_input:
+            try:
+                harga = int(harga_input)
+                barang["Harga"] = harga
+            except ValueError:
+                print("Inputan harga barang harus berupa angka.")
+
+        print("Barang berhasil diubah.")
+    else:
+        print("ID Barang tidak valid.")
+
+    input("Tekan Enter untuk melanjutkan...")
+
 
 # Fungsi untuk menu admin
 def menu_admin():
-    salah=0
+    salah = 0
     while True:
         system('cls')
         if salah:
             print(("═")*50)
             print("Pilihan tidak valid. Silakan coba lagi.")
-            salah=0
+            salah = 0
         print(("═")*50)
         print((" ")*6+"███╗   ███╗███████╗███╗   ██╗██╗   ██╗")
         print((" ")*6+"████╗ ████║██╔════╝████╗  ██║██║   ██║")
@@ -213,28 +251,32 @@ def menu_admin():
         print(("═")*50)
         print("1. Tampilkan Barang")
         print("2. Tambah Barang")
-        print("3. Hapus Barang")
-        print("4. Tampilkan Riwayat Pembelian")
-        print("5. Tampilkan Komplain")
-        print("6. Logout")
+        print("3. Edit Barang")
+        print("4. Hapus Barang")
+        print("5. Tampilkan Riwayat Pembelian")
+        print("6. Tampilkan Komplain")
+        print("7. Logout")
         print(("═")*50)
-        
-        pilihan = input("Masukkan pilihan (1-6): ")
-        
+
+        pilihan = input("Masukkan pilihan (1-7): ")
+
         if pilihan == "1":
             tampilkan_barang()
         elif pilihan == "2":
             tambah_barang()
         elif pilihan == "3":
-            hapus_barang()
+            edit_barang()
         elif pilihan == "4":
-            tampilkan_riwayat_pembelian()
+            hapus_barang()
         elif pilihan == "5":
-            tampilkan_komplain_admin()
+            tampilkan_riwayat_pembelian()
         elif pilihan == "6":
+            tampilkan_komplain_admin()
+        elif pilihan == "7":
             break
         else:
-            salah=1
+            salah = 1
+
 
 
 # Fungsi untuk menu pengguna
